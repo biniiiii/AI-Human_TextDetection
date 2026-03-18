@@ -4,7 +4,7 @@ const teamMembers = [
   {
     name: "Aayush Baral",
     role: "ML Engineer & Backend Developer",
-    photo: "/team/aalyush-baral.jpg",
+    photo: "/kce0.png",
   },
     {
     name: "Akriti Adhikari",

@@ -38,6 +38,9 @@ def _discover_model_paths() -> dict[str, str]:
 
 
 AVAILABLE_MODELS = _discover_model_paths()
+albert_model = os.getenv("ALBERT_MODEL_NAME")
+if albert_model:
+    AVAILABLE_MODELS[albert_model] = albert_model
 
 
 def _resolve_default_model_name() -> str:
