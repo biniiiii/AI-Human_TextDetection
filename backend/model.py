@@ -9,7 +9,7 @@ from transformers import pipeline, GPT2LMHeadModel, GPT2TokenizerFast
 MODEL_MAX_LENGTH = int(os.getenv("MODEL_MAX_LENGTH", "350"))
 MODEL_DIR = Path(__file__).resolve().parent
 DEFAULT_MODEL_NAME = os.getenv("DEFAULT_MODEL_NAME", "distilbert-base-uncased_length_set_balanced")
-LEGACY_MODEL_PATH = os.getenv("MODEL_PATH", f"./{DEFAULT_MODEL_NAME}")
+LEGACY_MODEL_PATH = os.getenv("MODEL_PATH", DEFAULT_MODEL_NAME)
 
 
 def _is_local_model_dir(path: Path) -> bool:
