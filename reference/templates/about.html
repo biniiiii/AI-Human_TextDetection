@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Detect AI-Generated Text</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <div class="brand-icon"></div>
+                <span class="brand-text">Detect AI-Generated Text</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="text-center">
+                <div class="badge-pill">Bachelor of Computer Engineering Project</div>
+                <h1 class="hero-title">About <span class="text-gradient">Detect AI-Generated Text</span></h1>
+                <p class="hero-description">
+                    A research project focused on developing fair and reliable AI-generated text detection 
+                    systems using state-of-the-art transformer models.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-overview">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title">The Problem We're Solving</h2>
+                    <p class="section-description">
+                        Large Language Models (LLMs) like ChatGPT, Gemini, and DeepSeek have become widely 
+                        used across various fields. However, their growing popularity raises concerns about 
+                        potential misuse, particularly in academic settings where they can discourage genuine 
+                        effort and undermine creativity.
+                    </p>
+                    <p class="section-description">
+                        Existing AI detection tools frequently exhibit bias against non-native English writers, 
+                        resulting in false positive detections that unfairly penalize legitimate writers. 
+                        Additionally, these tools are often vulnerable to simple paraphrasing techniques, 
+                        compromising fair assessment.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="problem-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">99%+</div>
+                            <div class="stat-label">Detection Accuracy</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">44K+</div>
+                            <div class="stat-label">Training Samples</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">Low</div>
+                            <div class="stat-label">Bias Against Non-Native</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">4+</div>
+                            <div class="stat-label">AI Models Covered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Gap -->
+    <section class="research-gap">
+        <div class="container">
+            <h2 class="section-title text-center">Bridging the Research Gap</h2>
+            <div class="gap-content">
+                <p class="lead-text">
+                    Despite the growing number of AI text detection systems, a clear research gap remains:
+                </p>
+                <div class="row g-4 mt-4">
+                    <div class="col-md-4">
+                        <div class="gap-card">
+                            <div class="gap-icon">🌍</div>
+                            <h4>Non-Native Bias</h4>
+                            <p>
+                                Existing detectors are largely trained on native English datasets, reducing 
+                                their reliability when evaluating texts written by non-native English speakers.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gap-card">
+                            <div class="gap-icon">🔄</div>
+                            <h4>Paraphrase Evasion</h4>
+                            <p>
+                                Many current systems struggle to generalize across different AI models and are 
+                                vulnerable to simple paraphrasing techniques.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gap-card">
+                            <div class="gap-icon">⚖️</div>
+                            <h4>Fair Assessment</h4>
+                            <p>
+                                There is a need for detection systems that perform consistently across various 
+                                AI-generated text sources while maintaining fairness.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Solution -->
+    <section class="our-solution">
+        <div class="container">
+            <h2 class="section-title">Our Approach</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Comprehensive Dataset Collection</h4>
+                        <p>
+                            We collected and integrated diverse datasets from platforms like HuggingFace, 
+                            Kaggle, and GitHub, including AI-generated texts from multiple models (ChatGPT-4, 
+                            Grok-3, Gemini) and human-written texts from various sources including non-native 
+                            English essays.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Advanced Preprocessing Pipeline</h4>
+                        <p>
+                            Developed a refined preprocessing pipeline optimized for transformer models, 
+                            including text cleaning, normalization, and filtering to ensure high-quality 
+                            input while preserving semantic content.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>BERT Fine-tuning</h4>
+                        <p>
+                            Fine-tuned BERT-base-uncased model using carefully selected hyperparameters 
+                            (learning rate: 2e-5, epochs: 3, weight decay: 0.01) to achieve optimal 
+                            performance on binary classification.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Rigorous Evaluation</h4>
+                        <p>
+                            Evaluated the model using multiple metrics including accuracy, precision, recall, 
+                            F1-score, and confusion matrix to ensure reliable performance across different 
+                            text types and sources.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Objectives -->
+    <section class="objectives">
+        <div class="container">
+            <h2 class="section-title">Project Objectives</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="objective-card">
+                        <div class="objective-header">
+                            <span class="objective-type">Main Objective</span>
+                        </div>
+                        <p>
+                            To develop an AI-generated text detection system using the BERT Transformer Model 
+                            to accurately classify text as AI-generated or human-written.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="objective-card">
+                        <div class="objective-header">
+                            <span class="objective-type">Specific Objectives</span>
+                        </div>
+                        <ul>
+                            <li>Collect and integrate diverse datasets from multiple sources</li>
+                            <li>Develop optimized preprocessing pipeline for transformer models</li>
+                            <li>Train and fine-tune BERT for optimal binary classification</li>
+                            <li>Minimize linguistic bias against non-native English speakers</li>
+                            <li>Evaluate robustness against paraphrasing attacks</li>
+                            <li>Deploy user-friendly web interface for real-time detection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2 class="section-title">Development Team</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img
+                                class="avatar-image"
+                                src="{{ url_for('static', filename='images/team/aayush-baral.jpg') }}"
+                                alt="Aayush Baral"
+                                loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/team/default-avatar.svg') }}';"
+                            >
+                        </div>
+                        <h4>Aayush Baral</h4>
+                        <p class="team-role">KCE079BCT003</p>
+                        <p class="team-desc">Model Development & Training</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img
+                                class="avatar-image"
+                                src="{{ url_for('static', filename='images/team/akriti-adhikari.jpg') }}"
+                                alt="Akriti Adhikari"
+                                loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/team/default-avatar.svg') }}';"
+                            >
+                        </div>
+                        <h4>Akriti Adhikari</h4>
+                        <p class="team-role">KCE079BCT009</p>
+                        <p class="team-desc">Dataset Collection & Preprocessing</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img
+                                class="avatar-image"
+                                src="{{ url_for('static', filename='images/team/binisha-parajuli.jpg') }}"
+                                alt="Binisha Parajuli"
+                                loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/team/default-avatar.svg') }}';"
+                            >
+                        </div>
+                        <h4>Binisha Parajuli</h4>
+                        <p class="team-role">KCE079BCT019</p>
+                        <p class="team-desc">UI/UX and Preprocessing</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img
+                                class="avatar-image"
+                                src="{{ url_for('static', filename='images/team/pranjal-giri.jpg') }}"
+                                alt="Pranjal Giri"
+                                loading="lazy"
+                                onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/team/default-avatar.svg') }}';"
+                            >
+                        </div>
+                        <h4>Pranjal Giri</h4>
+                        <p class="team-role">KCE079BCT027</p>
+                        <p class="team-desc">Web Development & Deployment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institution -->
+    <section class="institution">
+        <div class="container">
+            <div class="institution-card">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3>Khwopa College of Engineering</h3>
+                        <p class="institution-subtitle">
+                            Department of Computer and Electronics Engineering
+                        </p>
+                        <p>
+                            Submitted in partial fulfillment of the requirements for the degree of 
+                            Bachelor of Computer Engineering under Tribhuvan University, Institute of 
+                            Engineering.
+                        </p>
+                        <p class="supervisor">
+                            <strong>Project Supervisor:</strong> Prakash Chandra Prasad<br>
+                            Department of Electronics and Computer Engineering<br>
+                            Pulchowk Campus, Institute of Engineering
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div class="institution-logo">
+                            <div class="logo-placeholder">KCE</div>
+                        </div>
+                        <p class="location-text">Libali, Bhaktapur, Nepal</p>
+                        <p class="date-text">February 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scope & Future Work -->
+    <section class="future-work">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Scope of Project</h2>
+                    <div class="scope-list">
+                        <div class="scope-item">
+                            <div class="scope-icon">🤖</div>
+                            <div>
+                                <h4>Anti-Spam Bots</h4>
+                                <p>Helps filter AI-generated texts used by newer spam bots</p>
+                            </div>
+                        </div>
+                        <div class="scope-item">
+                            <div class="scope-icon">🎓</div>
+                            <div>
+                                <h4>Academic Integrity</h4>
+                                <p>Distinguishes human-written answers from LLM-generated content in academic settings</p>
+                            </div>
+                        </div>
+                        <div class="scope-item">
+                            <div class="scope-icon">📰</div>
+                            <div>
+                                <h4>Misinformation Filtering</h4>
+                                <p>Identifies AI-generated fake news and propaganda on social media</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h2 class="section-title">Future Enhancements</h2>
+                    <div class="future-list">
+                        <div class="future-item">
+                            <span class="future-number">01</span>
+                            <div>
+                                <h4>Dataset Expansion</h4>
+                                <p>Include more paraphrased AI texts and texts from newer LLM models</p>
+                            </div>
+                        </div>
+                        <div class="future-item">
+                            <span class="future-number">02</span>
+                            <div>
+                                <h4>Advanced Fine-tuning</h4>
+                                <p>Implement advanced regularization and adversarial training techniques</p>
+                            </div>
+                        </div>
+                        <div class="future-item">
+                            <span class="future-number">03</span>
+                            <div>
+                                <h4>Multi-language Support</h4>
+                                <p>Extend detection capabilities to multiple languages beyond English</p>
+                            </div>
+                        </div>
+                        <div class="future-item">
+                            <span class="future-number">04</span>
+                            <div>
+                                <h4>API Integration</h4>
+                                <p>Provide REST API for integration with educational platforms and content management systems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2026 Khwopa College of Engineering</p>
+                <p class="text-muted">AI-Generated Text Detection Using Transformer Model</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection History - Detect AI-Generated Text</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            padding-top: 80px;
+            background: var(--darker-bg);
+            min-height: 100vh;
+            font-family: 'Manrope', sans-serif;
+        }
+        
+        .history-container {
+            max-width: 1200px;
+            margin: 48px auto;
+            padding: 0 16px;
+        }
+        
+        .history-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .history-header h1 {
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .history-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .detection-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .detection-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .detection-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .detection-label {
+            display: inline-block;
+            min-height: 32px;
+            line-height: 32px;
+            padding: 0 16px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .label-ai {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        
+        .label-human {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+        
+        .detection-timestamp {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .detection-text {
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+        
+        .detection-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        
+        .stat-value {
+            color: var(--teal-primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 64px 16px;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .empty-state h2 {
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            color: var(--teal-primary);
+            text-decoration: none;
+            margin-bottom: 32px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            color: var(--teal-dark);
+        }
+        
+        .footer {
+            background: rgba(10, 14, 19, 0.85);
+            color: var(--text-secondary);
+            padding: 32px 0;
+            text-align: center;
+            margin-top: 64px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <div class="brand-icon"></div>
+                <span class="brand-text">Detect AI-Generated Text</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/history">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="history-container">
+        <div class="history-header">
+            <h1>Detection History</h1>
+            <p>View all your previous text analysis results</p>
+        </div>
+
+        {% if detections %}
+            <div class="detections-list">
+                {% for detection in detections %}
+                    <div class="detection-item">
+                        <div class="detection-header">
+                            <span class="detection-label {% if detection.label == 'AI-Generated' %}label-ai{% else %}label-human{% endif %}">
+                                {{ detection.label }}
+                            </span>
+                            <span class="detection-timestamp">{{ detection.timestamp }}</span>
+                        </div>
+                        
+                        <div class="detection-text">
+                            {{ detection.text }}
+                        </div>
+                        
+                        <div class="detection-stats">
+                            <div class="stat-item">
+                                <div class="stat-label">Probability</div>
+                                <div class="stat-value">{{ detection.probability }}%</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Confidence</div>
+                                <div class="stat-value">{{ detection.confidence }}%</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <div class="empty-state-icon">📋</div>
+                <h2>No Detection History</h2>
+                <p>You haven't analyzed any text yet. <a href="/" style="color: #14b8a6; text-decoration: none;">Start analyzing text</a> to build your history.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2026 Khwopa College of Engineering</p>
+                <p class="text-muted">AI-Generated Text Detection Using Transformer Model</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
