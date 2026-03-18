@@ -78,17 +78,6 @@ ALBERT_MODEL_NAME=biniiiii/albert-ai-detection
 
 ---
 
-## 👥 Team
-
-| Name | Role |
-|------|------|
-| Akriti Adhikari | Team Lead & NLP Engineer |
-| Aayush Baral | ML Engineer & Backend Developer |
-| Pranjal Giri | Frontend Developer & UI/UX |
-| Binisha Parajuli | Data Engineer & Researcher |
-
----
-
 ## 🏫 About
 
 Minor Project — Kathmandu College of Engineering
