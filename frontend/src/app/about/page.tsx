@@ -24,7 +24,7 @@ const teamMembers = [
 ];
 
 const stats = [
-  { value: "44,552", label: "Training Samples" },
+  { value: "60,000", label: "Training Samples" },
   { value: "99%", label: "Validation Accuracy" },
   { value: "110M", label: "Model Parameters" },
   { value: "512", label: "Max Tokens" },
@@ -90,7 +90,7 @@ export default function AboutPage() {
               fontFamily: "var(--font-body)",
             }}
           >
-            Final Year Project - BCT
+            Minor Project - BCT
           </div>
           <h1
             className="font-extrabold tracking-tight mb-6"
@@ -112,7 +112,7 @@ export default function AboutPage() {
               lineHeight: 1.7,
             }}
           >
-            AI Text Detector is an AI-generated text detection system built as a final year
+            AI Text Detector is an AI-generated text detection system built as a minor
             project at Khwopa college of Engineering, using fine-tuned DistilBERT to
             distinguish human writing from LLM-generated content with high accuracy.
           </p>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                 As AI writing tools become ubiquitous, distinguishing human-authored
                 text from machine-generated content is increasingly critical. Our
                 system fine-tunes DistilBERT on a balanced, high-quality dataset of
-                44,552 samples.
+                60,000 samples.
               </p>
               <p
                 className="text-sm leading-relaxed"

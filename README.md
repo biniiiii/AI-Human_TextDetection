@@ -1,4 +1,4 @@
-# VeritAI — AI-Generated Text Detection System
+# AI-Generated Text Detection System
 
 A full-stack web application that detects whether text is AI-generated or human-written, powered by fine-tuned BERT models.
 
@@ -49,7 +49,7 @@ cd backend
 python3.11 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python main.py
+uvicorn main:app --reload
 ```
 
 ### Frontend
@@ -80,5 +80,5 @@ ALBERT_MODEL_NAME=biniiiii/albert-ai-detection
 
 ## 🏫 About
 
-Minor Project — Kathmandu College of Engineering
+Minor Project — Khwopa College of Engineering
 Bachelor of Computer Engineering (BCT), 2079 Batch
