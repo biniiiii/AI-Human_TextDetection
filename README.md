@@ -1,6 +1,6 @@
 # AI-Generated Text Detection System
 
-A full-stack web application that detects whether text is AI-generated or human-written, powered by fine-tuned BERT models.
+A web application that detects whether text is AI-generated or human-written, powered by fine-tuned BERT models.
 
 ## 🌐 Live Demo
 - **Frontend:** https://ai-human-text-detection.vercel.app
